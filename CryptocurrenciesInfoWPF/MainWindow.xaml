@@ -4,18 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CryptocurrenciesInfoWPF"
+        xmlns:entity="clr-namespace:CryptocurrenciesInfoWPF.Models.Entities"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid x:Name="layoutGrid">
-        <Button x:Name="myButton" Width="120" Height="40" Content="Кнопка">
-            <Button.HorizontalAlignment>
-                <HorizontalAlignment>Center</HorizontalAlignment>
-            </Button.HorizontalAlignment>
+    <StackPanel >
+        <ListBox x:Name="topCryptocurrencyCollection" Height="330" Width="630" RenderTransformOrigin="0.516,0.5"/>
 
-            <Button.Background>
-                <SolidColorBrush Opacity="0.5" Color="Red" />
-            </Button.Background>
-        </Button>
-
-    </Grid>
+    </StackPanel>
 </Window>

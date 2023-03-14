@@ -1,17 +1,9 @@
-﻿using System;
+﻿using CryptocurrenciesInfoWPF.Models;
+using CryptocurrenciesInfoWPF.Models.Entities;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace CryptocurrenciesInfoWPF
 {
@@ -23,8 +15,24 @@ namespace CryptocurrenciesInfoWPF
         public MainWindow()
         {
             InitializeComponent();
+            InsertTopCryptocurrencyToListBox();
         }
+        private async void InsertTopCryptocurrencyToListBox()
+        {
+            var cryptocurrencyCollection = await GetFirstTenCryptocurrencyByRank();
+            foreach(var item in cryptocurrencyCollection)
+            {
+                if(item.changePercent24Hr > 0)
+                    topCryptocurrencyCollection.Items.Insert(Convert.ToInt16(item.rank) - 1, $"{item.name} \t\t +{item.changePercent24Hr} % 📈");
+                else
+                    topCryptocurrencyCollection.Items.Insert(Convert.ToInt16(item.rank) - 1, $"{item.name} \t\t {item.changePercent24Hr} % 📉");
+            }
+        }
+        public async Task<List<Cryptocurrency>> GetFirstTenCryptocurrencyByRank()
+        {
+            var data = await HttpClientService.GetJsonFromAPIResponseAsync("http://api.coincap.io/v2/assets?limit=10");
+            return  Toolchain.GetCryptocurrencyCollectionFromJson(data);
 
-       
+        }
     }
 }

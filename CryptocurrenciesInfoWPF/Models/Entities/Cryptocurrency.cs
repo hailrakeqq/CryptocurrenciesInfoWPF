@@ -5,7 +5,7 @@ namespace CryptocurrenciesInfoWPF.Models.Entities;
 public class Cryptocurrency
 {
     public string? id { get; set; }
-    public string? rank { get; set; }
+    public int? rank { get; set; }
     public string? symbol { get; set; }
     public string? name { get; set; }
     public string? supply { get; set; }
@@ -20,7 +20,12 @@ public class Cryptocurrency
 
 public class Root
 {
-    public List<Cryptocurrency>? data { get; set; }
+    public Cryptocurrency[]? data { get; set; }
+    public long timestamp { get; set; }
+}
+public class RootForSingleObjectResponse
+{
+    public Cryptocurrency? data { get; set; }
     public long timestamp { get; set; }
 }
 

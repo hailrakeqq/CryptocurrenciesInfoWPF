@@ -1,0 +1,16 @@
+﻿<Page x:Class="CryptocurrenciesInfoWPF.Pages.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CryptocurrenciesInfoWPF.Pages"
+      mc:Ignorable="d" 
+      Title="MainPage"
+      Style="{DynamicResource PageStyle}">
+
+    <Grid Height="800">
+        <ListBox x:Name="topCryptocurrencyCollection" Style="{DynamicResource ListBoxStyle}" Width="320" Height="300" Margin="240,250,240,250" SelectionChanged="GetIDAndRedirectToCryptocurrencyPage" Grid.RowSpan="2"/>
+        <Button Content="Settings" Click="GoToSettings" Width="100" Height="20" Margin="44,88,636,692"/>
+        <Button Click="RedirectToAllCryptocurrencyCollectionPage" Width="150" Height="50" Content="All Cryptocurrency" Margin="325,135,305,615" Style="{DynamicResource ButtonStyle}"/>
+    </Grid>
+</Page>

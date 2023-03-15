@@ -11,8 +11,12 @@ namespace CryptocurrenciesInfoWPF;
 
 public static class Toolchain
 {
-    public static List<Cryptocurrency>? GetCryptocurrencyCollectionFromJson(string json)
+    public static async Task<Cryptocurrency[]>? GetCryptocurrencyCollectionFromJson(string json)
     {
         return JsonConvert.DeserializeObject<Root>(json).data;
+    }
+    public static async Task<Cryptocurrency> GetCryptocurrencyObjectFromJson(string json)
+    {
+        return JsonConvert.DeserializeObject<RootForSingleObjectResponse>(json).data;
     }
 }
